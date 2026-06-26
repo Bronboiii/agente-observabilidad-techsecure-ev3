@@ -14,7 +14,7 @@ class TechSecureMonitor:
         
     def anonimizar_datos_sensibles(self, texto):
         """
-        [PROTOCOLO DE PRIVACIDAD E ISO 27001 - IE3]
+        [PROTOCOLO DE PRIVACIDAD E ISO 27001]
         Detecta y ofusca direcciones IP y nombres de hosts internos en los registros públicos de telemetría.
         """
         if not isinstance(texto, str):
@@ -26,7 +26,7 @@ class TechSecureMonitor:
 
     def calcular_costo_tokens(self, prompt, respuesta, modelo="gpt-4o"):
         """
-        [MÉTRICAS DE RENDIMIENTO Y COSTO - IE1]
+        [MÉTRICAS DE RENDIMIENTO Y COSTO]
         Simulación exacta de conteo de tokens basado en caracteres y cálculo de costos operacionales.
         """
         # Estimación estándar: 1 token equivale aproximadamente a 4 caracteres en inglés/código
@@ -47,7 +47,7 @@ class TechSecureMonitor:
 
     def registrar_traza_evento(self, cve, software, herramienta, latencia, entrada, salida, exito=True):
         """
-        [ANALISIS DE REGISTROS Y TRAZABILIDAD - IE2]
+        [ANALISIS DE REGISTROS Y TRAZABILIDAD]
         Genera registros estructurados en JSON, sanitizando datos sensibles antes de la persistencia.
         """
         datos_tokens = self.calcular_costo_tokens(str(entrada), str(salida))
@@ -75,6 +75,6 @@ class TechSecureMonitor:
             with open(self.log_file, "a", encoding="utf-8") as f:
                 f.write(json.dumps(registro_evento, ensure_ascii=False) + "\n")
         except Exception as e:
-            print(f"❌ Error escribiendo trazas de telemetría: {e}")
+            print(f"Error escribiendo trazas de telemetría: {e}")
             
         return registro_evento
